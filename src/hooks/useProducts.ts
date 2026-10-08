@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
+import { compareCatalogCategories, compareCatalogProducts } from '@/lib/catalogPriority';
 
 export interface DatabaseProduct {
   id: string;
@@ -28,11 +29,23 @@ export interface DatabaseCategory {
   slug: string;
   image_url: string | null;
   icon_key?: string | null;
+  display_order?: number;
+}
+
+interface DatabaseSubcategory {
+  id: string;
+  name: string;
+  slug: string;
 }
 
 // Transform database product to match the existing Product type used in components
-export const transformProduct = (dbProduct: DatabaseProduct, categories: DatabaseCategory[]) => {
+export const transformProduct = (
+  dbProduct: DatabaseProduct,
+  categories: DatabaseCategory[],
+  subcategories: DatabaseSubcategory[] = [],
+) => {
   const category = categories.find(c => c.id === dbProduct.category_id);
+  const subcategory = subcategories.find(s => s.id === dbProduct.subcategory_id);
   return {
     id: dbProduct.id,
     name: dbProduct.name,
@@ -43,6 +56,7 @@ export const transformProduct = (dbProduct: DatabaseProduct, categories: Databas
     supplementaryImages: dbProduct.supplementary_images ?? undefined,
     category: category?.name || 'Uncategorized',
     subcategoryId: dbProduct.subcategory_id ?? undefined,
+    subcategoryName: subcategory?.name,
     brandId: dbProduct.brand_id ?? undefined,
     colors: dbProduct.colors ?? undefined,
     sizes: dbProduct.sizes ?? undefined,
@@ -74,22 +88,35 @@ export const useProducts = () => {
   const categoriesQuery = useQuery({
     queryKey: ['categories'],
     queryFn: async () => {
-      const { data, error } = await supabase.from('categories').select('*').order('name');
+      const { data, error } = await supabase.from('categories').select('*').order('display_order').order('name');
       if (error) throw error;
       return (data || []) as DatabaseCategory[];
     },
     staleTime: STALE,
   });
 
+  const subcategoriesQuery = useQuery({
+    queryKey: ['subcategories', 'catalog-priority'],
+    queryFn: async () => {
+      const { data, error } = await supabase.from('subcategories').select('id,name,slug');
+      if (error) throw error;
+      return (data || []) as DatabaseSubcategory[];
+    },
+    staleTime: STALE,
+  });
+
   const products = productsQuery.data || [];
-  const categories = categoriesQuery.data || [];
-  const transformedProducts = products.map(p => transformProduct(p, categories));
+  const categories = [...(categoriesQuery.data || [])].sort(compareCatalogCategories);
+  const subcategories = subcategoriesQuery.data || [];
+  const transformedProducts = products
+    .map(p => transformProduct(p, categories, subcategories))
+    .sort(compareCatalogProducts);
 
   return {
     products: transformedProducts,
     categories,
-    loading: productsQuery.isLoading || categoriesQuery.isLoading,
-    error: (productsQuery.error || categoriesQuery.error) as any,
+    loading: productsQuery.isLoading || categoriesQuery.isLoading || subcategoriesQuery.isLoading,
+    error: (productsQuery.error || categoriesQuery.error || subcategoriesQuery.error) as any,
     rawProducts: products,
   };
 };
@@ -98,9 +125,9 @@ export const useCategories = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ['categories'],
     queryFn: async () => {
-      const { data, error } = await supabase.from('categories').select('*').order('name');
+      const { data, error } = await supabase.from('categories').select('*').order('display_order').order('name');
       if (error) throw error;
-      return (data || []) as DatabaseCategory[];
+      return ((data || []) as DatabaseCategory[]).sort(compareCatalogCategories);
     },
     staleTime: STALE,
   });
