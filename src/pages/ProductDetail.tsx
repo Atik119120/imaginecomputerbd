@@ -357,7 +357,8 @@ const ProductDetail = () => {
 
   const relatedProducts = allProducts
     .filter(p => p.category === product?.category && p.id !== product?.id)
-    .slice(0, 4);
+    .sort((a, b) => Number(!!b.subcategoryName && b.subcategoryName === product?.subcategoryName) - Number(!!a.subcategoryName && a.subcategoryName === product?.subcategoryName))
+    .slice(0, 5);
 
   if (loading) {
     return (
@@ -767,20 +768,26 @@ const ProductDetail = () => {
                 const defaultTab = hasSpecs ? 'specifications' : hasDescription ? 'description' : 'reviews';
 
                 return (
-                  <div className="mt-10 pt-8 border-t border-border">
+                  <div id="product-tabs" className="mt-10 pt-8 border-t border-border grid lg:grid-cols-[minmax(0,1fr)_320px] gap-6">
+                    <div className="min-w-0">
                     <Tabs defaultValue={defaultTab} className="w-full">
-                      <TabsList className="w-full flex flex-wrap h-auto justify-start gap-1 bg-secondary/50 p-1">
-                        {hasSpecs && <TabsTrigger value="specifications" className="text-xs sm:text-sm">Specifications</TabsTrigger>}
-                        {hasDescription && <TabsTrigger value="description" className="text-xs sm:text-sm">Description</TabsTrigger>}
-                        <TabsTrigger value="reviews" className="text-xs sm:text-sm">
-                          Reviews{reviewStats.count > 0 ? ` (${reviewStats.count})` : ''}
-                        </TabsTrigger>
-                        <TabsTrigger value="returns" className="text-xs sm:text-sm">Returns</TabsTrigger>
+                      <TabsList className="w-full flex flex-wrap h-auto justify-start gap-2 bg-transparent p-0">
+                        {[
+                          ...(hasSpecs ? [['specifications', 'Specification']] : []),
+                          ['description', 'Description'],
+                          ['reviews', `Reviews (${reviewStats.count})`],
+                          ['returns', 'Returns'],
+                        ].map(([v, l]) => (
+                          <TabsTrigger key={v} value={v} className="px-5 py-2.5 text-sm font-semibold rounded-md bg-background border border-border shadow-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:border-primary">{l}</TabsTrigger>
+                        ))}
                       </TabsList>
 
                       {hasSpecs && (
-                        <TabsContent value="specifications" className="pt-6">
+                        <TabsContent value="specifications" className="pt-4">
+                          <div className="bg-background border border-border rounded-md p-5">
+                          <h3 className="text-xl font-semibold mb-4">Specification</h3>
                           <SpecificationsTable groups={specGroups} />
+                          </div>
                           {hasTable && (
                             <div className="mt-6">
                               <div className="inline-block px-4 py-1.5 bg-secondary/60 rounded-t-md border border-border border-b-0 text-xs font-semibold text-foreground">
@@ -811,11 +818,14 @@ const ProductDetail = () => {
                         </TabsContent>
                       )}
 
-                      {hasDescription && (
-                        <TabsContent value="description" className="pt-6">
-                          <RichText text={product.description!} className="text-sm md:text-base text-foreground/80 max-w-3xl" />
-                        </TabsContent>
-                      )}
+                      <TabsContent value="description" className="pt-4">
+                        <div className="bg-background border border-border rounded-md p-5">
+                          <h3 className="text-xl font-semibold mb-4">Description</h3>
+                          {hasDescription
+                            ? <RichText text={product.description!} className="text-sm md:text-base text-foreground/80" />
+                            : <p className="text-sm text-muted-foreground">{product.name}{product.brand ? ` by ${product.brand}` : ''}. বিস্তারিত জানতে Specification দেখুন।</p>}
+                        </div>
+                      </TabsContent>
 
                       <TabsContent value="reviews" className="pt-6">
                         <ReviewSection productId={product.id} onStats={setReviewStats} />
@@ -848,26 +858,32 @@ const ProductDetail = () => {
                         </div>
                       </TabsContent>
                     </Tabs>
+                    </div>
+                    {relatedProducts.length > 0 && (
+                      <aside className="bg-background border border-border rounded-md p-4 h-fit lg:sticky lg:top-4">
+                        <h2 className="text-center text-lg font-semibold text-primary pb-3 border-b border-border">Similar Product</h2>
+                        <div className="divide-y divide-border">
+                          {relatedProducts.map((p) => (
+                            <Link key={p.id} to={`/product/${p.id}`} className="flex gap-3 py-4 group">
+                              <img src={p.image} alt={p.name} loading="lazy" className="w-20 h-20 object-contain flex-shrink-0" onError={(e) => { (e.target as HTMLImageElement).src = '/placeholder.svg'; }} />
+                              <div className="min-w-0">
+                                <p className="text-sm text-foreground line-clamp-3 group-hover:text-primary">{p.name}</p>
+                                {p.price > 0 && (
+                                  <p className="mt-1 text-sm">
+                                    <span className="font-semibold text-primary">{p.price.toLocaleString()}৳</span>
+                                    {p.originalPrice && p.originalPrice > p.price && <s className="ml-2 text-xs text-muted-foreground">{p.originalPrice.toLocaleString()}৳</s>}
+                                  </p>
+                                )}
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </aside>
+                    )}
                   </div>
                 );
               })()}
             </div>
-
-
-            {/* Related Products */}
-            {relatedProducts.length > 0 && (
-              <section className="mt-10">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-1 h-6 bg-primary rounded-full" />
-                  <h2 className="font-heading text-xl md:text-2xl font-semibold">Related Products</h2>
-                </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
-                  {relatedProducts.map((prod) => (
-                    <ProductCard key={prod.id} product={prod} onQuickView={() => {}} />
-                  ))}
-                </div>
-              </section>
-            )}
           </div>
         </div>
       </main>
