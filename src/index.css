@@ -17,8 +17,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 7%;
 
-    --primary: 48 100% 50%;
-    --primary-foreground: 0 0% 7%;
+    --primary: 356 76% 48%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 96%;
     --secondary-foreground: 0 0% 10%;
@@ -40,7 +40,7 @@
 
     --border: 0 0% 89%;
     --input: 0 0% 89%;
-    --ring: 48 100% 50%;
+    --ring: 356 76% 48%;
 
     --radius: 0.5rem;
 
@@ -50,16 +50,16 @@
 
     --header-accent-1: 0 0% 7%;
     --header-accent-2: 0 0% 13%;
-    --header-accent-3: 48 100% 50%;
+    --header-accent-3: 356 76% 48%;
 
     --sidebar-background: 0 0% 7%;
     --sidebar-foreground: 0 0% 92%;
-    --sidebar-primary: 48 100% 50%;
-    --sidebar-primary-foreground: 0 0% 7%;
+    --sidebar-primary: 356 76% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 13%;
     --sidebar-accent-foreground: 0 0% 96%;
     --sidebar-border: 0 0% 18%;
-    --sidebar-ring: 48 100% 50%;
+    --sidebar-ring: 356 76% 48%;
 
     --font-heading: 'Space Grotesk', 'Sora', sans-serif;
     --font-body: 'Outfit', 'Inter', sans-serif;
@@ -76,8 +76,8 @@
     --popover: 0 0% 10%;
     --popover-foreground: 0 0% 96%;
 
-    --primary: 48 100% 50%;
-    --primary-foreground: 0 0% 7%;
+    --primary: 356 76% 52%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 14%;
     --secondary-foreground: 0 0% 96%;
@@ -96,7 +96,7 @@
 
     --border: 0 0% 20%;
     --input: 0 0% 20%;
-    --ring: 48 100% 50%;
+    --ring: 356 76% 52%;
   }
 }
 
@@ -180,11 +180,11 @@
 
   /* Gradient utility classes */
   .gradient-primary {
-    background: linear-gradient(135deg, hsl(48 100% 55%) 0%, hsl(44 100% 46%) 100%);
+    background: linear-gradient(135deg, hsl(356 76% 52%) 0%, hsl(356 76% 42%) 100%);
   }
 
   .gradient-accent {
-    background: linear-gradient(135deg, hsl(48 100% 55%) 0%, hsl(40 100% 50%) 100%);
+    background: linear-gradient(135deg, hsl(356 76% 52%) 0%, hsl(0 70% 45%) 100%);
   }
 
   .gradient-dark {
@@ -255,24 +255,4 @@
   }
 }
 
-/* Brand color discipline:
-   yellow = only on dark (black) surfaces · red = sparing accent on light surfaces */
-@layer utilities {
-  .text-primary,
-  .hover\:text-primary:hover,
-  .group:hover .group-hover\:text-primary {
-    color: hsl(var(--brand-red));
-  }
-
-  .border-primary,
-  .hover\:border-primary:hover {
-    border-color: hsl(var(--brand-red));
-  }
-
-  /* keep yellow inside dark sections */
-  .bg-ink .text-primary,
-  .bg-ink .hover\:text-primary:hover,
-  [data-surface='dark'] .text-primary {
-    color: hsl(var(--primary));
-  }
-}
+/* Brand color discipline: red is the primary brand color on all surfaces. */

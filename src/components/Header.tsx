@@ -136,7 +136,7 @@ export const Header = () => {
           {/* Mobile Row 1 */}
           <div className="flex lg:hidden items-center justify-between h-14">
             <button
-              className="p-2 text-ink hover:text-brand-red transition-colors"
+              className="p-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -147,7 +147,7 @@ export const Header = () => {
             </Link>
 
             <div className="flex items-center gap-2">
-              <Link to="/wishlist" className="relative p-2 text-ink hover:text-brand-red transition-colors">
+              <Link to="/wishlist" className="relative p-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors">
                 <Heart size={20} />
                 {wishlistCount > 0 && (
                   <span className="absolute -top-0.5 -right-0.5 bg-orange-500 text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
@@ -157,7 +157,7 @@ export const Header = () => {
               </Link>
               <button
                 onClick={() => setIsCartOpen(true)}
-                className="relative p-2 text-ink hover:text-brand-red transition-colors"
+                className="relative p-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors"
               >
                 <ShoppingCart size={20} />
                 {totalItems > 0 && (
@@ -225,7 +225,7 @@ export const Header = () => {
 
             {/* Right: Star Tech-style icon-stack actions */}
             <div className="flex items-center gap-6 flex-shrink-0">
-              <Link to="/order-tracking" className="group flex flex-col items-center gap-0.5 text-ink hover:text-brand-red transition-colors">
+              <Link to="/order-tracking" className="group flex flex-col items-center gap-0.5 text-primary-foreground hover:text-primary-foreground/80 transition-colors">
                 <div className="relative">
                   <MapPin size={22} />
                 </div>
@@ -235,7 +235,7 @@ export const Header = () => {
               {user ? (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <button className="flex flex-col items-center gap-0.5 text-ink hover:text-brand-red transition-colors">
+                    <button className="flex flex-col items-center gap-0.5 text-primary-foreground hover:text-primary-foreground/80 transition-colors">
                       <UserCircle size={22} />
                       <span className="text-[11px] font-medium leading-tight truncate max-w-[60px]">Account</span>
                     </button>
@@ -265,13 +265,13 @@ export const Header = () => {
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
-                <Link to="/auth" className="flex flex-col items-center gap-0.5 text-ink hover:text-brand-red transition-colors">
+                <Link to="/auth" className="flex flex-col items-center gap-0.5 text-primary-foreground hover:text-primary-foreground/80 transition-colors">
                   <User size={22} />
                   <span className="text-[11px] font-medium leading-tight">Sign In</span>
                 </Link>
               )}
 
-              <Link to="/wishlist" className="relative flex flex-col items-center gap-0.5 text-ink hover:text-brand-red transition-colors">
+              <Link to="/wishlist" className="relative flex flex-col items-center gap-0.5 text-primary-foreground hover:text-primary-foreground/80 transition-colors">
                 <div className="relative">
                   <Heart size={22} />
                   {wishlistCount > 0 && (
@@ -285,7 +285,7 @@ export const Header = () => {
 
               <button
                 onClick={() => setIsCartOpen(true)}
-                className="relative flex flex-col items-center gap-0.5 text-ink hover:text-brand-red transition-colors"
+                className="relative flex flex-col items-center gap-0.5 text-primary-foreground hover:text-primary-foreground/80 transition-colors"
               >
                 <div className="relative">
                   <ShoppingCart size={22} />
@@ -319,7 +319,7 @@ export const Header = () => {
       >
         <div className="container mx-auto px-4">
           <nav className="flex items-center justify-center gap-8 h-12">
-            {navCategories.length > 0 ? navCategories.map((cat) => (
+            {navCategories.length > 0 ? navCategories.slice(0, 8).map((cat) => (
               <div
                 key={cat.id}
                 className="h-full"
@@ -389,6 +389,14 @@ export const Header = () => {
               </div>
             )) : (
               <span className="text-[13px] text-gray-400">Loading categories…</span>
+            )}
+            {navCategories.length > 8 && (
+              <Link
+                to="/shop"
+                className="text-[13px] font-semibold whitespace-nowrap text-brand-red hover:text-brand-red/80 h-full flex items-center gap-1 border-b-2 border-transparent hover:border-brand-red transition-colors"
+              >
+                All Categories
+              </Link>
             )}
           </nav>
         </div>
