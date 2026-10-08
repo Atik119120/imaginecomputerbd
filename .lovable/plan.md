@@ -1,11 +1,13 @@
-# Fix instant order emails
+# ক্যাটালগের অগ্রাধিকার সাজানো
 
-## Changes
-- Use the valid linked Resend connection and its verified `bepro.click` sending address.
-- Require a customer email at checkout so every successful order has an invoice recipient.
-- Preserve the order, but report email delivery acceptance accurately instead of silently claiming success.
-- Add safe order-level logs, redeploy the email function, then test both customer and admin messages against a real recent order.
+## কী পরিবর্তন হবে
+- হোমপেজের ক্যাটাগরি তালিকায় আগে থাকবে: Monitor, Laptop, Gaming, Gadget, Desktop।
+- Gaming/Gadget-এর মধ্যে Smart Watch, Earbuds, TV Box ও Power Bank-এর পণ্য আগে আসবে।
+- Desktop-এর মধ্যে AI PC ও Gaming PC-এর পণ্য আগে আসবে।
+- হোমপেজের পণ্য বিভাগ এবং Shop-এর মূল পণ্য তালিকাতেও একই অগ্রাধিকার প্রয়োগ হবে।
+- কোনো ক্যাটাগরি বা সাবক্যাটাগরি ফিল্টার করলে সেই ফিল্টারের স্বাভাবিক ফল বজায় থাকবে।
 
-## Technical details
-- Update `send-notification-email` to read `RESEND_API_KEY_1`, return provider status safely, and log provider acceptance IDs without exposing secrets.
-- Update checkout validation and invocation handling so failed email calls are visible and bounded retries only apply where appropriate.
+## কারিগরি বিবরণ
+- একটি শেয়ার করা priority helper দিয়ে category, subcategory এবং product rank নির্ধারণ করা হবে।
+- বর্তমান ডেটা ও admin-defined order fallback হিসেবে থাকবে, যাতে অন্য পণ্য হারিয়ে না যায়।
+- ডেস্কটপ ও মোবাইল—দুই ভিউতেই ফল যাচাই করা হবে।
