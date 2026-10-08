@@ -17,7 +17,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 7%;
 
-    --primary: 217 91% 50%;
+    --primary: 356 76% 48%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 96%;
@@ -26,10 +26,10 @@
     --muted: 0 0% 94%;
     --muted-foreground: 0 0% 40%;
 
-    --accent: 217 91% 50%;
+    --accent: 356 76% 48%;
     --accent-foreground: 0 0% 100%;
 
-    --brand-red: 217 91% 50%;
+    --brand-red: 356 76% 48%;
 
 
     --ink: 0 0% 7%;
@@ -40,7 +40,7 @@
 
     --border: 0 0% 89%;
     --input: 0 0% 89%;
-    --ring: 217 91% 50%;
+    --ring: 356 76% 48%;
 
     --radius: 0.5rem;
 
@@ -50,16 +50,16 @@
 
     --header-accent-1: 0 0% 7%;
     --header-accent-2: 0 0% 13%;
-    --header-accent-3: 217 91% 50%;
+    --header-accent-3: 356 76% 48%;
 
     --sidebar-background: 0 0% 7%;
     --sidebar-foreground: 0 0% 92%;
-    --sidebar-primary: 217 91% 50%;
+    --sidebar-primary: 356 76% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 13%;
     --sidebar-accent-foreground: 0 0% 96%;
     --sidebar-border: 0 0% 18%;
-    --sidebar-ring: 217 91% 50%;
+    --sidebar-ring: 356 76% 48%;
 
     --font-heading: 'Space Grotesk', 'Sora', sans-serif;
     --font-body: 'Outfit', 'Inter', sans-serif;
@@ -76,7 +76,7 @@
     --popover: 0 0% 10%;
     --popover-foreground: 0 0% 96%;
 
-    --primary: 217 91% 56%;
+    --primary: 356 76% 52%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 14%;
@@ -85,7 +85,7 @@
     --muted: 0 0% 16%;
     --muted-foreground: 0 0% 62%;
 
-    --accent: 217 91% 56%;
+    --accent: 356 76% 52%;
     --accent-foreground: 0 0% 100%;
 
     --ink: 0 0% 96%;
@@ -96,7 +96,7 @@
 
     --border: 0 0% 20%;
     --input: 0 0% 20%;
-    --ring: 217 91% 56%;
+    --ring: 356 76% 52%;
   }
 }
 
@@ -180,11 +180,11 @@
 
   /* Gradient utility classes */
   .gradient-primary {
-    background: linear-gradient(135deg, hsl(217 91% 56%) 0%, hsl(221 83% 42%) 100%);
+    background: linear-gradient(135deg, hsl(356 76% 52%) 0%, hsl(356 76% 42%) 100%);
   }
 
   .gradient-accent {
-    background: linear-gradient(135deg, hsl(217 91% 56%) 0%, hsl(230 80% 45%) 100%);
+    background: linear-gradient(135deg, hsl(356 76% 52%) 0%, hsl(0 70% 45%) 100%);
   }
 
   .gradient-dark {
