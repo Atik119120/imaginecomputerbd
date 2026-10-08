@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /checkout
+Disallow: /profile
+Disallow: /auth
+
+Sitemap: https://aminonebd.com/sitemap.xml

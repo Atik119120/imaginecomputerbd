@@ -1,0 +1,278 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Sora:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    /* Gadget er Dokan — Tech Palette
+       Yellow #FFCC00 · Black #111111 · White #FFFFFF · Red #E11D28 (accents only) */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 7%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 7%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7%;
+
+    --primary: 48 100% 50%;
+    --primary-foreground: 0 0% 7%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 356 76% 48%;
+    --accent-foreground: 0 0% 100%;
+
+    --brand-red: 356 76% 48%;
+
+
+    --ink: 0 0% 7%;
+    --ink-foreground: 0 0% 100%;
+
+    --destructive: 356 76% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 89%;
+    --input: 0 0% 89%;
+    --ring: 48 100% 50%;
+
+    --radius: 0.5rem;
+
+    --success: 142 65% 38%;
+    --warning: 48 100% 50%;
+    --info: 210 90% 50%;
+
+    --header-accent-1: 0 0% 7%;
+    --header-accent-2: 0 0% 13%;
+    --header-accent-3: 48 100% 50%;
+
+    --sidebar-background: 0 0% 7%;
+    --sidebar-foreground: 0 0% 92%;
+    --sidebar-primary: 48 100% 50%;
+    --sidebar-primary-foreground: 0 0% 7%;
+    --sidebar-accent: 0 0% 13%;
+    --sidebar-accent-foreground: 0 0% 96%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 48 100% 50%;
+
+    --font-heading: 'Space Grotesk', 'Sora', sans-serif;
+    --font-body: 'Outfit', 'Inter', sans-serif;
+    --font-accent: 'Sora', sans-serif;
+  }
+
+  .dark {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 96%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 96%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 96%;
+
+    --primary: 48 100% 50%;
+    --primary-foreground: 0 0% 7%;
+
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 0 0% 96%;
+
+    --muted: 0 0% 16%;
+    --muted-foreground: 0 0% 62%;
+
+    --accent: 356 76% 52%;
+    --accent-foreground: 0 0% 100%;
+
+    --ink: 0 0% 96%;
+    --ink-foreground: 0 0% 7%;
+
+    --destructive: 356 76% 54%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 48 100% 50%;
+  }
+}
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 transition-colors;
+  }
+
+  .btn-accent {
+    @apply bg-accent text-accent-foreground hover:bg-accent/90 transition-colors;
+  }
+
+  .btn-outline-primary {
+    @apply border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors;
+  }
+
+  .card-product {
+    @apply bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-border/60 hover:border-primary/20;
+  }
+
+  .price-original {
+    @apply text-muted-foreground line-through text-sm;
+  }
+
+  .price-sale {
+    @apply text-accent font-semibold;
+  }
+
+  .badge-discount {
+    @apply bg-destructive text-destructive-foreground text-xs font-semibold px-2 py-1 rounded;
+  }
+
+  .nav-link {
+    @apply text-foreground hover:text-primary transition-colors cursor-pointer;
+  }
+
+  .input-search {
+    @apply bg-secondary border-0 rounded-l-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary;
+  }
+
+  /* Shine effect for buttons */
+  .btn-shine {
+    @apply relative overflow-hidden;
+  }
+
+  .btn-shine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+
+  .btn-shine:hover::before {
+    left: 100%;
+  }
+
+  /* Gradient utility classes */
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(48 100% 55%) 0%, hsl(44 100% 46%) 100%);
+  }
+
+  .gradient-accent {
+    background: linear-gradient(135deg, hsl(48 100% 55%) 0%, hsl(40 100% 50%) 100%);
+  }
+
+  .gradient-dark {
+    background: linear-gradient(180deg, hsl(0 0% 13%) 0%, hsl(0 0% 5%) 100%);
+  }
+
+  .gradient-card {
+    background: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--background)) 100%);
+  }
+
+  /* Glow effect */
+  .glow-effect {
+    @apply transition-all duration-300;
+  }
+
+  .glow-effect:hover {
+    box-shadow: 0 0 24px hsl(var(--primary) / 0.35);
+  }
+
+  /* Pulse animation for icons */
+  .icon-pulse {
+    @apply transition-transform duration-200;
+  }
+
+  .icon-pulse:hover {
+    animation: iconPulse 0.3s ease-in-out;
+  }
+
+  @keyframes iconPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+
+  /* Underline animation */
+  .underline-animate {
+    @apply relative;
+  }
+
+  .underline-animate::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: hsl(var(--primary));
+    transition: width 0.3s ease;
+  }
+
+  .underline-animate:hover::after {
+    width: 100%;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .font-accent {
+    font-family: var(--font-accent);
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Brand color discipline:
+   yellow = only on dark (black) surfaces · red = sparing accent on light surfaces */
+@layer utilities {
+  .text-primary,
+  .hover\:text-primary:hover,
+  .group:hover .group-hover\:text-primary {
+    color: hsl(var(--brand-red));
+  }
+
+  .border-primary,
+  .hover\:border-primary:hover {
+    border-color: hsl(var(--brand-red));
+  }
+
+  /* keep yellow inside dark sections */
+  .bg-ink .text-primary,
+  .bg-ink .hover\:text-primary:hover,
+  [data-surface='dark'] .text-primary {
+    color: hsl(var(--primary));
+  }
+}

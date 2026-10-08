@@ -1,0 +1,21 @@
+# Amin One
+
+> Premium organic grocery store in Bangladesh — pure honey, dates, ghee, spices, oils and nuts with cash on delivery nationwide.
+
+Amin One curates organic groceries sourced for purity and freshness. Customers shop by category, track orders by phone or ID, and pay via bKash, Nagad, Roket, or cash on delivery.
+
+## Pages
+
+- [Home](/): Featured collection, hero banners, top selling items.
+- [Shop](/shop): Browse the full organic grocery catalog with filters.
+- [New Drop](/new-drop): Latest products added to the store.
+- [About](/about): Company story, mission, and quality promise.
+- [Contact](/contact): Phone, WhatsApp, address, and contact form.
+- [Order Tracking](/order-tracking): Track an order by Order ID or phone number.
+
+## Optional
+
+- [Wishlist](/wishlist): Saved products for signed-in customers.
+- [Return Policy](/return-policy): Return and refund terms.
+- [Privacy Policy](/privacy-policy): How customer data is handled.
+- [Terms & Conditions](/terms-conditions): Site usage terms.

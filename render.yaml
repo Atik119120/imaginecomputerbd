@@ -1,0 +1,91 @@
+services:
+  - type: web
+    name: unavailable-attire
+    runtime: static
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./dist
+    pullRequestPreviewsEnabled: false
+    envVars:
+      - key: NODE_VERSION
+        value: 20.11.1
+      - key: NPM_CONFIG_PRODUCTION
+        value: false
+      - key: VITE_SUPABASE_URL
+        value: https://syoenzqclizidypesxqq.supabase.co
+      - key: VITE_SUPABASE_PUBLISHABLE_KEY
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN5b2VuenFjbGl6aWR5cGVzeHFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyOTM3OTYsImV4cCI6MjA5Mjg2OTc5Nn0.v5c7by1u0txiVyu1avKomYSuDo0CEJPvOiCBvDAerZA
+      - key: VITE_SUPABASE_PROJECT_ID
+        value: syoenzqclizidypesxqq
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    headers:
+      # Hashed assets - cache forever (1 year, immutable)
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /*.js
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /*.css
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /*.woff2
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /*.woff
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      # Images - cache 30 days, allow revalidation
+      - path: /*.png
+        name: Cache-Control
+        value: public, max-age=2592000, stale-while-revalidate=86400
+      - path: /*.jpg
+        name: Cache-Control
+        value: public, max-age=2592000, stale-while-revalidate=86400
+      - path: /*.jpeg
+        name: Cache-Control
+        value: public, max-age=2592000, stale-while-revalidate=86400
+      - path: /*.webp
+        name: Cache-Control
+        value: public, max-age=2592000, stale-while-revalidate=86400
+      - path: /*.svg
+        name: Cache-Control
+        value: public, max-age=2592000, stale-while-revalidate=86400
+      - path: /*.ico
+        name: Cache-Control
+        value: public, max-age=2592000
+      # HTML - never cache (always fresh for new deploys)
+      - path: /index.html
+        name: Cache-Control
+        value: no-cache, no-store, must-revalidate
+      - path: /
+        name: Cache-Control
+        value: no-cache, no-store, must-revalidate
+      # SEO files
+      - path: /robots.txt
+        name: Cache-Control
+        value: public, max-age=86400
+      - path: /sitemap.xml
+        name: Cache-Control
+        value: public, max-age=86400
+      # Security headers - applied site-wide
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: Permissions-Policy
+        value: camera=(), microphone=(), geolocation=(self), payment=(self)
+      - path: /*
+        name: Strict-Transport-Security
+        value: max-age=63072000; includeSubDomains; preload
+      - path: /*
+        name: X-XSS-Protection
+        value: 1; mode=block
