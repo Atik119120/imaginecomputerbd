@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { Link } from 'react-router-dom';
 import { optimizeImage } from '@/lib/optimizeImage';
-import fallbackMainBanner from '@/assets/hero-banner.png.asset.json';
+import fallbackMainBanner from '@/assets/hero-main-banner.webp.asset.json';
 
 interface Banner {
   id: string;
