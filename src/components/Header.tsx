@@ -319,7 +319,7 @@ export const Header = () => {
       >
         <div className="container mx-auto px-4">
           <nav className="flex items-center justify-center gap-8 h-12">
-            {navCategories.length > 0 ? navCategories.map((cat) => (
+            {navCategories.length > 0 ? navCategories.slice(0, 8).map((cat) => (
               <div
                 key={cat.id}
                 className="h-full"
