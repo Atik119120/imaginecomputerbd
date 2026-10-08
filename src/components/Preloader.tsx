@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import logo from '@/assets/logo.webp';
+import logoAsset from '@/assets/imagine-logo.png.asset.json';
+const logo = logoAsset.url;
 
 export const Preloader = () => {
   const [loading, setLoading] = useState(true);

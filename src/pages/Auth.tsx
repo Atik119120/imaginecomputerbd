@@ -8,7 +8,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
-import logo from '@/assets/logo.webp';
+import logoAsset from '@/assets/imagine-logo.png.asset.json';
+const logo = logoAsset.url;
 
 type Mode = 'login' | 'register' | 'forgot';
 
@@ -77,7 +78,7 @@ const Auth = () => {
     }
   };
 
-  const displayLogo = logoUrl || logo;
+  const displayLogo = logo;
 
   return (
     <div className="min-h-screen bg-secondary/30 flex items-center justify-center px-4 py-12">

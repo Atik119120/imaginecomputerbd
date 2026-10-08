@@ -1,5 +1,6 @@
 import { forwardRef } from 'react';
-import logo from '@/assets/logo.webp';
+import logoAsset from '@/assets/imagine-logo.png.asset.json';
+const logo = logoAsset.url;
 
 interface OrderItem {
   product_name: string;
