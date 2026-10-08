@@ -12,7 +12,8 @@ import { useCategories } from '@/hooks/useProducts';
 import { useNavCategories, useCategoryBrands } from '@/hooks/useTaxonomy';
 import { useSiteSettings } from '@/hooks/useSiteSettings';
 import { products } from '@/data/products';
-import logo from '@/assets/logo.webp';
+import logoAsset from '@/assets/imagine-logo.png.asset.json';
+const logo = logoAsset.url;
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -125,7 +126,7 @@ export const Header = () => {
     }
   };
 
-  const displayLogo = logoUrl || logo;
+  const displayLogo = logo;
   const showLogo = true;
 
   return (
@@ -143,7 +144,7 @@ export const Header = () => {
             </button>
 
             <Link to="/" className="h-12 min-w-28 flex items-center justify-center">
-              {showLogo && <img src={displayLogo} alt={siteName} className="h-12 w-auto object-contain" />}
+              {showLogo && <img src={displayLogo} alt={siteName} className="h-12 w-auto object-contain bg-background rounded-lg px-2 py-0.5 shadow-md ring-2 ring-primary-foreground/60" />}
             </Link>
 
             <div className="flex items-center gap-2">
@@ -173,7 +174,7 @@ export const Header = () => {
           <div className="hidden lg:flex items-center justify-between h-20">
             {/* Logo */}
             <Link to="/" className="h-16 min-w-40 flex-shrink-0 flex items-center">
-              {showLogo && <img src={displayLogo} alt={siteName} className="h-16 w-auto object-contain" />}
+              {showLogo && <img src={displayLogo} alt={siteName} className="h-16 w-auto object-contain bg-background rounded-xl px-3 py-1 shadow-lg ring-2 ring-primary-foreground/60" />}
             </Link>
 
             {/* Centered Search */}
