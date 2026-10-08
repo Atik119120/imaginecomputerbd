@@ -390,6 +390,14 @@ export const Header = () => {
             )) : (
               <span className="text-[13px] text-gray-400">Loading categories…</span>
             )}
+            {navCategories.length > 8 && (
+              <Link
+                to="/shop"
+                className="text-[13px] font-semibold whitespace-nowrap text-brand-red hover:text-brand-red/80 h-full flex items-center gap-1 border-b-2 border-transparent hover:border-brand-red transition-colors"
+              >
+                All Categories
+              </Link>
+            )}
           </nav>
         </div>
       </div>
