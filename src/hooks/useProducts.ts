@@ -69,19 +69,32 @@ export const transformProduct = (
 };
 
 const STALE = 5 * 60 * 1000; // 5 min
+const PAGE_SIZE = 1000;
+
+const fetchAllInStockProducts = async () => {
+  const allProducts: DatabaseProduct[] = [];
+
+  for (let from = 0; ; from += PAGE_SIZE) {
+    const { data, error } = await supabase
+      .from('products')
+      .select('*')
+      .eq('in_stock', true)
+      .order('created_at', { ascending: false })
+      .range(from, from + PAGE_SIZE - 1);
+    if (error) throw error;
+
+    const page = (data || []) as DatabaseProduct[];
+    allProducts.push(...page);
+    if (page.length < PAGE_SIZE) break;
+  }
+
+  return allProducts;
+};
 
 export const useProducts = () => {
   const productsQuery = useQuery({
     queryKey: ['products', 'in_stock'],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from('products')
-        .select('*')
-        .eq('in_stock', true)
-        .order('created_at', { ascending: false });
-      if (error) throw error;
-      return (data || []) as DatabaseProduct[];
-    },
+    queryFn: fetchAllInStockProducts,
     staleTime: STALE,
   });
 
