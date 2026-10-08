@@ -17,6 +17,7 @@ export interface Product {
   supplementaryImages?: string[];
   category: string;
   subcategoryId?: string;
+  subcategoryName?: string;
   brandId?: string;
   colors?: string[];
   colorImages?: Record<string, string>;

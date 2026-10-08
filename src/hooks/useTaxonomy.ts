@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
+import { compareCatalogCategories, getSubcategoryPriority } from '@/lib/catalogPriority';
 
 export interface Subcategory {
   id: string;
@@ -58,10 +59,17 @@ export const useNavCategories = () => {
       if (cats.error) throw cats.error;
       if (subs.error) throw subs.error;
       const subList = (subs.data || []) as Subcategory[];
-      return ((cats.data || []) as Omit<NavCategory, 'subcategories'>[]).map((c) => ({
-        ...c,
-        subcategories: subList.filter((s) => s.category_id === c.id),
-      })) as NavCategory[];
+      return ((cats.data || []) as Omit<NavCategory, 'subcategories'>[])
+        .sort(compareCatalogCategories)
+        .map((c) => ({
+          ...c,
+          subcategories: subList
+            .filter((s) => s.category_id === c.id)
+            .sort((a, b) => {
+              const priority = getSubcategoryPriority(c.slug, a.slug) - getSubcategoryPriority(c.slug, b.slug);
+              return priority || a.display_order - b.display_order || a.name.localeCompare(b.name);
+            }),
+        })) as NavCategory[];
     },
     staleTime: STALE,
   });
