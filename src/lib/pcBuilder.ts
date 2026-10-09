@@ -66,7 +66,7 @@ const vendorOf = (n: string) => {
 const sum = (b: Build, k: string) => (b[k] || []).reduce((t, p) => t + Number(p.price || 0), 0);
 
 /** Whether a candidate part fits the current build (strict: unknown = hidden when a dependency exists). */
-export const compatible = (slotKey: string, name: string, b: Build, extra = '') => {
+export const compatible = (slotKey: string, name: string, b: Build, extra = '', price = 0) => {
   const cpu = b.cpu?.[0], mobo = b.mobo?.[0];
   const text = `${name} ${extra}`;
   if (slotKey === 'mobo' && cpu) {
@@ -87,7 +87,7 @@ export const compatible = (slotKey: string, name: string, b: Build, extra = '') 
     const t = text.toUpperCase().replace(/LGA\s(\d)/g, 'LGA$1');
     const mentions = /AM[45]|LGA\d{4}/.test(t);
     if (!mentions) return true;
-    return cs.startsWith('AM') ? /AM[45]/.test(t) && (t.includes(cs) || !/AM[45]/.test(t.replace(cs, ''))) || t.includes(cs) : t.includes(cs) || (cs === 'LGA1851' && t.includes('LGA1700'));
+    return t.includes(cs) || (cs === 'LGA1851' && t.includes('LGA1700'));
   }
   if (slotKey === 'ram' && mobo) {
     if (/SO-?DIMM|LAPTOP|NOTEBOOK/i.test(name)) return false;
@@ -103,7 +103,6 @@ export const compatible = (slotKey: string, name: string, b: Build, extra = '') 
   }
   if (slotKey === 'gpu' && mobo) {
     const base = sum(b, 'cpu') + sum(b, 'mobo');
-    const price = Number((extra.match(/"price":(\d+)/) || [])[1] || 0);
     if (price && base) return price <= base * 3;
     return true;
   }
