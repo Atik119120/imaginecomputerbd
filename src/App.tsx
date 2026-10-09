@@ -26,6 +26,7 @@ import OrderTracking from "./pages/OrderTracking";
 import { AdminDashboard } from "./pages/admin";
 import NotFound from "./pages/NotFound";
 import PCBuilder from "./pages/PCBuilder";
+import PCBuilderChoose from "./pages/PCBuilderChoose";
 
 import { WhatsAppButton } from "./components/WhatsAppButton";
 import { ScrollToTop } from "./components/ScrollToTop";
@@ -64,6 +65,7 @@ const App = () => (
                   <Route path="/terms-conditions" element={<TermsConditions />} />
                   <Route path="/order-tracking" element={<OrderTracking />} />
                   <Route path="/pc-builder" element={<PCBuilder />} />
+                  <Route path="/pc-builder/choose/:slot" element={<PCBuilderChoose />} />
                   <Route path="/admin/*" element={<AdminDashboard />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />
