@@ -104,8 +104,8 @@ const Contact = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <SEO
-        title="Contact Amazing Computer — Phone, WhatsApp & Address"
-        description="Get in touch with Amazing Computer. Reach us by phone, WhatsApp, email or visit our store in Bangladesh."
+        title="Contact Imagine Computer — Phone, WhatsApp & Address"
+        description="Get in touch with Imagine Computer. Reach us by phone, WhatsApp, email or visit our store in Bangladesh."
         path="/contact"
       />
       <Header />

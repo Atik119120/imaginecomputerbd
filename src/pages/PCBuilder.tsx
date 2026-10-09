@@ -137,7 +137,7 @@ export default function PCBuilder() {
         <nav className="text-xs text-muted-foreground mb-3 print:hidden"><Link to="/" className="hover:text-primary">Home</Link> / PC Builder</nav>
         <div ref={sheet} className="bg-background rounded-lg border border-border overflow-hidden">
           <div className="flex flex-wrap items-center justify-between gap-3 p-4 border-b border-border bg-secondary/50">
-            <div className="font-heading font-bold text-lg text-primary">Amazing Computer</div>
+            <div className="font-heading font-bold text-lg text-primary">Imagine Computer</div>
             <div className="flex print:hidden">
               <Action icon={ShoppingBasket} label="Add to Cart" onClick={addAll} />
               <Action icon={Save} label="Save PC" onClick={savePc} />

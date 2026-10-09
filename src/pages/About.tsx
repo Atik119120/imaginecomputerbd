@@ -68,8 +68,8 @@ const About = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <SEO
-        title="About Amazing Computer — Our Tech Story"
-        description="Learn about Amazing Computer — our mission to bring genuine gadgets and tech accessories to every corner of Bangladesh."
+        title="About Imagine Computer — Our Tech Story"
+        description="Learn about Imagine Computer — our mission to bring genuine gadgets and tech accessories to every corner of Bangladesh."
         path="/about"
       />
       <Header />

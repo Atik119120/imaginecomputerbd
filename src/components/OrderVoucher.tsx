@@ -77,7 +77,7 @@ export const OrderVoucher = forwardRef<HTMLDivElement, OrderVoucherProps>(
         {/* Top bar */}
         <div style={{ background: '#FFCC00', padding: '18px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-            <img src={logo} alt="Amazing Computer" style={{ height: 68, width: 'auto', objectFit: 'contain' }} />
+            <img src={logo} alt="Imagine Computer" style={{ height: 68, width: 'auto', objectFit: 'contain' }} />
             <div>
               <p style={{ margin: 0, color: '#111111', fontSize: 18, fontWeight: 800, letterSpacing: '0.5px' }}>GADGET ER DOKAN</p>
               <p style={{ margin: 0, color: '#111111', opacity: 0.7, fontSize: 10, letterSpacing: '1.5px', textTransform: 'uppercase' }}>Genuine Tech · Bangladesh</p>
@@ -196,7 +196,7 @@ export const OrderVoucher = forwardRef<HTMLDivElement, OrderVoucherProps>(
 
           {/* Footer */}
           <div style={{ marginTop: 20, paddingTop: 14, borderTop: '1px solid #e6e6e6', textAlign: 'center', fontSize: 10.5, color: '#777', lineHeight: 1.7 }}>
-            <p style={{ margin: 0 }}>Thank you for shopping with Amazing Computer.</p>
+            <p style={{ margin: 0 }}>Thank you for shopping with Imagine Computer.</p>
             <p style={{ margin: 0 }}>Support: admin@gadgeterdokanbd.com · gadgeterdokanbd.com</p>
             <p style={{ margin: 0 }}>This is a computer-generated document. No signature required.</p>
           </div>
