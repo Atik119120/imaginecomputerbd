@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Trash2, RefreshCw, ShoppingBasket, Save, Printer, Camera, CheckCircle2, AlertTriangle, Lock, Plus, Share2, RotateCcw } from 'lucide-react';
+import { Trash2, RefreshCw, ShoppingBasket, Save, Printer, Camera, CheckCircle2, AlertTriangle, Plus, Share2, RotateCcw } from 'lucide-react';
 import { toPng } from 'html-to-image';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -95,7 +95,7 @@ export default function PCBuilder() {
           <div className="flex-1 min-w-0">{Head}<div className="h-2 w-2/3 mt-2 rounded bg-muted" />
             {locked && <p className="text-[11px] text-muted-foreground mt-1">আগে {slotByKey(s.needs)?.label} সিলেক্ট করুন</p>}</div>
           <Button size="sm" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground print:hidden" onClick={() => choose(s)}>
-            {locked && <Lock className="w-3 h-3 mr-1" />}Choose
+            Choose
           </Button>
         </div>
       );
@@ -137,7 +137,7 @@ export default function PCBuilder() {
         <nav className="text-xs text-muted-foreground mb-3 print:hidden"><Link to="/" className="hover:text-primary">Home</Link> / PC Builder</nav>
         <div ref={sheet} className="bg-background rounded-lg border border-border overflow-hidden">
           <div className="flex flex-wrap items-center justify-between gap-3 p-4 border-b border-border bg-secondary/50">
-            <div className="font-heading font-bold text-lg text-primary">Gadget er Dokan</div>
+            <div className="font-heading font-bold text-lg text-primary">Amazing Computer</div>
             <div className="flex print:hidden">
               <Action icon={ShoppingBasket} label="Add to Cart" onClick={addAll} />
               <Action icon={Save} label="Save PC" onClick={savePc} />

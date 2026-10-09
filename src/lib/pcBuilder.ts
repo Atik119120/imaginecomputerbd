@@ -11,7 +11,7 @@ export const CORE: Slot[] = [
   { key: 'ram', label: 'RAM', sub: 'ram-desktop', cat: 'component', icon: MemoryStick, required: true, multi: true, needs: 'mobo' },
   { key: 'ssd', label: 'Storage', sub: 'ssd', cat: 'component', icon: HardDrive, required: true, multi: true },
   { key: 'hdd', label: 'Hard Disk', sub: 'hard-disk-drive', cat: 'component', icon: HardDrive, multi: true },
-  { key: 'gpu', label: 'Graphics Card', sub: 'graphics-card', cat: 'component', icon: MonitorPlay },
+  { key: 'gpu', label: 'Graphics Card', sub: 'graphics-card', cat: 'component', icon: MonitorPlay, needs: 'mobo' },
   { key: 'psu', label: 'Power Supply', sub: 'power-supply', cat: 'component', icon: Zap, required: true },
   { key: 'case', label: 'Casing', sub: 'casing', cat: 'component', icon: Box, required: true, multi: true },
 ];
@@ -56,12 +56,55 @@ export const socketOf = (n: string) => {
 };
 export const ddrOf = (n: string) => (/DDR5/i.test(n) ? 'DDR5' : /DDR4/i.test(n) ? 'DDR4' : null);
 
-/** Whether a candidate part fits the current build. */
-export const compatible = (slotKey: string, name: string, b: Build) => {
+const vendorOf = (n: string) => {
+  const so = socketOf(n);
+  if (so) return so.startsWith('AM') ? 'AMD' : 'INTEL';
+  if (/\b(AMD|RYZEN|ATHLON|THREADRIPPER)\b/i.test(n)) return 'AMD';
+  if (/\b(INTEL|CORE|PENTIUM|CELERON|XEON)\b/i.test(n)) return 'INTEL';
+  return null;
+};
+const sum = (b: Build, k: string) => (b[k] || []).reduce((t, p) => t + Number(p.price || 0), 0);
+
+/** Whether a candidate part fits the current build (strict: unknown = hidden when a dependency exists). */
+export const compatible = (slotKey: string, name: string, b: Build, extra = '', price = 0) => {
   const cpu = b.cpu?.[0], mobo = b.mobo?.[0];
-  const same = (x: string | null, y: string | null) => !x || !y || x === y;
-  if (slotKey === 'mobo' && cpu) return same(socketOf(cpu.name), socketOf(name));
-  if (slotKey === 'cpu' && mobo) return same(socketOf(mobo.name), socketOf(name));
-  if (slotKey === 'ram' && mobo) return same(ddrOf(mobo.name), ddrOf(name));
+  const text = `${name} ${extra}`;
+  if (slotKey === 'mobo' && cpu) {
+    const cv = vendorOf(cpu.name), mv = vendorOf(text);
+    if (cv && mv && cv !== mv) return false;
+    const cs = socketOf(cpu.name), ms = socketOf(name) || socketOf(text);
+    return !cs || !ms || cs === ms;
+  }
+  if (slotKey === 'cpu' && mobo) {
+    const mv = vendorOf(mobo.name), cv = vendorOf(name);
+    if (mv && cv && mv !== cv) return false;
+    const ms = socketOf(mobo.name), cs = socketOf(name);
+    return !ms || !cs || ms === cs;
+  }
+  if (slotKey === 'cooler' && cpu) {
+    const cs = socketOf(cpu.name);
+    if (!cs) return true;
+    const t = text.toUpperCase().replace(/LGA\s(\d)/g, 'LGA$1');
+    const mentions = /AM[45]|LGA\d{4}/.test(t);
+    if (!mentions) return true;
+    return t.includes(cs) || (cs === 'LGA1851' && t.includes('LGA1700'));
+  }
+  if (slotKey === 'ram' && mobo) {
+    if (/SO-?DIMM|LAPTOP|NOTEBOOK/i.test(name)) return false;
+    const md = ddrOf(mobo.name), rd = ddrOf(text);
+    if (md) return rd === md;
+    return true;
+  }
+  if ((slotKey === 'ssd' || slotKey === 'hdd') && mobo) {
+    const gen5 = /PCIE\s?5|GEN\s?5/i.test(name);
+    if (gen5 && !/X870|X670|B850|B650E|Z890|Z790|PCIE\s?5|GEN\s?5/i.test(mobo.name)) return false;
+    if (/LAPTOP|PORTABLE|EXTERNAL/i.test(name) && slotKey === 'hdd') return false;
+    return !/PORTABLE|EXTERNAL/i.test(name);
+  }
+  if (slotKey === 'gpu' && mobo) {
+    const base = sum(b, 'cpu') + sum(b, 'mobo');
+    if (price && base) return price <= base * 3;
+    return true;
+  }
   return true;
 };

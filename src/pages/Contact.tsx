@@ -104,8 +104,8 @@ const Contact = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <SEO
-        title="Contact Gadget er Dokan — Phone, WhatsApp & Address"
-        description="Get in touch with Gadget er Dokan. Reach us by phone, WhatsApp, email or visit our store in Bangladesh."
+        title="Contact Amazing Computer — Phone, WhatsApp & Address"
+        description="Get in touch with Amazing Computer. Reach us by phone, WhatsApp, email or visit our store in Bangladesh."
         path="/contact"
       />
       <Header />
