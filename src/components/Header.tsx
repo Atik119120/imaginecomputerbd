@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Search, ShoppingCart, Heart, User, Menu, X, ChevronDown, LogOut, UserCircle, Shield, Phone, Home, MapPin, HelpCircle, MessageCircle } from 'lucide-react';
+import { Search, ShoppingCart, Heart, User, Menu, X, ChevronDown, LogOut, UserCircle, Shield, Phone, Home, MapPin, HelpCircle, MessageCircle, Cpu } from 'lucide-react';
 
 import { getCategoryIcon } from '@/lib/categoryIcons';
 import { motion, AnimatePresence } from 'framer-motion';
