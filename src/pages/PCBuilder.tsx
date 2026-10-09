@@ -89,8 +89,9 @@ export default function PCBuilder() {
     loadSaved();
   };
   const toDataUrl = async (src: string) => {
+    const get = async (u: string) => { const r = await fetch(u, { mode: 'cors' }); if (!r.ok) throw 0; return r.blob(); };
     try {
-      const r = await fetch(src, { mode: 'cors' }); const b = await r.blob();
+      const b = await get(src).catch(() => get(`https://images.weserv.nl/?url=${encodeURIComponent(src.replace(/^https?:\/\//, ''))}&w=200&output=png`));
       return await new Promise<string>((res) => { const f = new FileReader(); f.onload = () => res(f.result as string); f.readAsDataURL(b); });
     } catch { return src; }
   };
