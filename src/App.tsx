@@ -25,6 +25,7 @@ import TermsConditions from "./pages/TermsConditions";
 import OrderTracking from "./pages/OrderTracking";
 import { AdminDashboard } from "./pages/admin";
 import NotFound from "./pages/NotFound";
+import PCBuilder from "./pages/PCBuilder";
 
 import { WhatsAppButton } from "./components/WhatsAppButton";
 import { ScrollToTop } from "./components/ScrollToTop";
@@ -62,6 +63,7 @@ const App = () => (
                   <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                   <Route path="/terms-conditions" element={<TermsConditions />} />
                   <Route path="/order-tracking" element={<OrderTracking />} />
+                  <Route path="/pc-builder" element={<PCBuilder />} />
                   <Route path="/admin/*" element={<AdminDashboard />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />
