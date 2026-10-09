@@ -226,6 +226,9 @@ export const Header = () => {
 
             {/* Right: Star Tech-style icon-stack actions */}
             <div className="flex items-center gap-6 flex-shrink-0">
+              <Link to="/pc-builder" className="flex items-center gap-1.5 rounded-md bg-primary-foreground text-primary px-3 py-2 text-sm font-semibold hover:opacity-90 transition-opacity">
+                <Cpu size={18} /> PC Builder
+              </Link>
               <Link to="/order-tracking" className="group flex flex-col items-center gap-0.5 text-primary-foreground hover:text-primary-foreground/80 transition-colors">
                 <div className="relative">
                   <MapPin size={22} />
