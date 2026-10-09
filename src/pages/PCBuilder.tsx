@@ -157,7 +157,7 @@ export default function PCBuilder() {
               <Link to={`/product/${p.id}`} className="text-sm text-foreground line-clamp-1 hover:text-primary">{p.name}</Link>
             </div>
             <span className="font-bold text-foreground whitespace-nowrap">{Number(p.price).toLocaleString()}৳</span>
-            <div className="flex gap-1 border-l border-border pl-2 print:hidden">
+            <div className={`flex gap-1 border-l border-border pl-2 print:hidden ${capturing ? "hidden" : ""}`}>
               <Button size="icon" variant="ghost" onClick={() => removeAt(s.key, i)} aria-label="Remove"><Trash2 className="w-4 h-4" /></Button>
               {i === 0 && <Button size="icon" variant="ghost" onClick={() => choose(s)} aria-label="Change"><RefreshCw className="w-4 h-4" /></Button>}
             </div>
@@ -205,7 +205,7 @@ export default function PCBuilder() {
             </div>
           </div>
           {(issues.length > 0 || missing.length > 0) && (
-            <div className="px-4 py-3 space-y-1 text-sm border-b border-border print:hidden">
+            <div className={`px-4 py-3 space-y-1 text-sm border-b border-border print:hidden ${capturing ? "hidden" : ""}`}>
               {issues.map((i) => <div key={i} className="flex gap-2 text-destructive"><AlertTriangle className="w-4 h-4 mt-0.5" />{i}</div>)}
               {missing.length > 0 && <div className="text-muted-foreground text-xs">বাকি: {missing.map((m) => m.label).join(', ')}</div>}
             </div>
