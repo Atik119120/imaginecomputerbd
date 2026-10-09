@@ -165,10 +165,10 @@ const Shop = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
-        title={categoryLabel ? `${categoryLabel} — Gadget er Dokan` : 'Shop Gadgets & Tech Accessories — Gadget er Dokan'}
+        title={categoryLabel ? `${categoryLabel} — Amazing Computer` : 'Shop Gadgets & Tech Accessories — Amazing Computer'}
         description={categoryLabel
-          ? `Browse ${categoryLabel} at Gadget er Dokan. Genuine gadgets with cash on delivery in Bangladesh.`
-          : 'Browse the full Gadget er Dokan catalog — smart watches, earbuds, chargers, cables and power banks.'}
+          ? `Browse ${categoryLabel} at Amazing Computer. Genuine gadgets with cash on delivery in Bangladesh.`
+          : 'Browse the full Amazing Computer catalog — smart watches, earbuds, chargers, cables and power banks.'}
         path={categoryParam ? `/shop/${categoryParam}` : '/shop'}
       />
       <Header />

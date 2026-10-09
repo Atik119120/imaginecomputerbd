@@ -25,7 +25,7 @@ export const AdminSettings = () => {
   const faviconInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
 
-  const [siteName, setSiteName] = useState('Gadget er Dokan');
+  const [siteName, setSiteName] = useState('Amazing Computer');
   const [logoUrl, setLogoUrl] = useState('');
   const [faviconUrl, setFaviconUrl] = useState('');
   const [headerContent, setHeaderContent] = useState({

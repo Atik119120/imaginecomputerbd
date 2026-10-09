@@ -228,11 +228,11 @@ export const AdminDashboard = () => {
         <div className="h-[76px] flex items-center px-4 border-b border-sidebar-border">
           <div className="flex items-center gap-3 min-w-0">
             <div className="w-11 h-11 rounded-xl bg-white flex items-center justify-center flex-shrink-0 overflow-hidden">
-              <img src={logo} alt="Gadget er Dokan" className="w-9 h-9 object-contain" />
+              <img src={logo} alt="Amazing Computer" className="w-9 h-9 object-contain" />
             </div>
             {!sidebarCollapsed && (
               <div className="flex flex-col leading-tight min-w-0">
-                <span className="font-heading font-bold whitespace-nowrap text-[15px] truncate">Gadget er Dokan</span>
+                <span className="font-heading font-bold whitespace-nowrap text-[15px] truncate">Amazing Computer</span>
                 <span className="text-[10px] uppercase tracking-[0.22em] text-sidebar-foreground/50">Dashboard</span>
               </div>
             )}

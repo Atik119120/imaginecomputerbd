@@ -28,7 +28,7 @@ const defaultFooter: FooterSettings = {
   phone: '09617827080',
   email: 'admin@gadgeterdokanbd.com',
   address: 'Dhaka, BD',
-  copyright: 'Gadget er Dokan',
+  copyright: 'Amazing Computer',
 };
 const defaultSocial: SocialLinks = { facebook: '', instagram: '', youtube: '', linkedin: '' };
 const defaultPayments: PaymentMethods = { bkash: true, nagad: true, roket: true, cod: true };

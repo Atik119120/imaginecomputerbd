@@ -11,7 +11,7 @@ interface SiteSettings {
 }
 
 const defaults: SiteSettings = {
-  siteName: 'Gadget er Dokan',
+  siteName: 'Amazing Computer',
   logoUrl: '',
   faviconUrl: '',
   headerPhone: '(880) 123 456 789',
