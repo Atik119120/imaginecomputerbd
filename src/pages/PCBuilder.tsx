@@ -104,7 +104,7 @@ export default function PCBuilder() {
         {list.map((p, i) => (
           <div key={p.id + i} className="flex items-center gap-3 md:gap-4">
             <div className="w-14 h-14 shrink-0 rounded-md bg-background flex items-center justify-center overflow-hidden">
-              <img src={optimizeImage(p.image_url || '/placeholder.svg', 120)} alt={p.name} className="w-full h-full object-contain" crossOrigin="anonymous" />
+              <img src={optimizeImage(p.image_url || '/placeholder.svg', 120)} alt={p.name} className="w-full h-full object-contain" />
             </div>
             <div className="flex-1 min-w-0">
               {i === 0 && Head}
