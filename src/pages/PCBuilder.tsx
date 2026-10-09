@@ -180,7 +180,7 @@ export default function PCBuilder() {
       <div className="print:hidden"><Header /></div>
       <main className="container mx-auto px-3 md:px-4 py-6 max-w-5xl">
         <nav className="text-xs text-muted-foreground mb-3 print:hidden"><Link to="/" className="hover:text-primary">Home</Link> / PC Builder</nav>
-        <div ref={sheet} className="bg-background rounded-lg border border-border overflow-hidden">
+        <div ref={sheet} id="pc-print" className="bg-background rounded-lg border border-border overflow-hidden">
           <div className="flex flex-wrap items-center justify-between gap-3 p-4 border-b border-border bg-secondary/50">
             <img src={logoColor} alt="Imagine Computer" className="h-12 w-auto object-contain print:h-10" />
             <div className={`flex print:hidden ${capturing ? 'hidden' : ''}`}>
