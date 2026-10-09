@@ -12,8 +12,7 @@ import { useCategories } from '@/hooks/useProducts';
 import { useNavCategories, useCategoryBrands } from '@/hooks/useTaxonomy';
 import { useSiteSettings } from '@/hooks/useSiteSettings';
 import { products } from '@/data/products';
-import logoAsset from '@/assets/imagine-logo.png.asset.json';
-const logo = logoAsset.url;
+import logo from '@/assets/imagine-logo-white.png';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -144,7 +143,7 @@ export const Header = () => {
             </button>
 
             <Link to="/" className="h-12 min-w-28 flex items-center justify-center">
-              {showLogo && <img src={displayLogo} alt={siteName} className="h-12 w-auto object-contain bg-background rounded-lg px-2 py-0.5 shadow-md ring-2 ring-primary-foreground/60" />}
+              {showLogo && <img src={displayLogo} alt={siteName} className="h-12 w-auto object-contain" />}
             </Link>
 
             <div className="flex items-center gap-2">
@@ -174,7 +173,7 @@ export const Header = () => {
           <div className="hidden lg:flex items-center justify-between h-20">
             {/* Logo */}
             <Link to="/" className="h-16 min-w-40 flex-shrink-0 flex items-center">
-              {showLogo && <img src={displayLogo} alt={siteName} className="h-16 w-auto object-contain bg-background rounded-xl px-3 py-1 shadow-lg ring-2 ring-primary-foreground/60" />}
+              {showLogo && <img src={displayLogo} alt={siteName} className="h-16 w-auto object-contain" />}
             </Link>
 
             {/* Centered Search */}
@@ -226,10 +225,6 @@ export const Header = () => {
 
             {/* Right: Star Tech-style icon-stack actions */}
             <div className="flex items-center gap-6 flex-shrink-0">
-              <Link to="/pc-builder" className="flex flex-col items-center gap-0.5 text-primary-foreground hover:text-primary-foreground/80 transition-colors">
-                <Cpu size={22} />
-                <span className="text-[11px] font-medium leading-tight">PC Builder</span>
-              </Link>
               <Link to="/order-tracking" className="group flex flex-col items-center gap-0.5 text-primary-foreground hover:text-primary-foreground/80 transition-colors">
                 <div className="relative">
                   <MapPin size={22} />
@@ -304,11 +299,11 @@ export const Header = () => {
               </button>
 
               <Link
-                to="/shop"
+                to="/pc-builder"
                 className="hidden xl:flex items-center gap-2 bg-ink hover:bg-ink/90 text-ink-foreground px-5 py-2.5 rounded-md font-semibold text-sm transition-all shadow-md"
               >
-                <ShoppingCart size={16} />
-                Shop Now
+                <Cpu size={16} />
+                PC Build
               </Link>
             </div>
           </div>
