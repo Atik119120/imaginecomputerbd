@@ -300,7 +300,7 @@ export const Header = () => {
 
               <Link
                 to="/pc-builder"
-                className="hidden xl:flex items-center gap-2 bg-ink hover:bg-ink/90 text-ink-foreground px-5 py-2.5 rounded-md font-semibold text-sm transition-all shadow-md"
+                className="hidden lg:flex items-center gap-2 bg-ink hover:bg-ink/90 text-ink-foreground px-5 py-2.5 rounded-md font-semibold text-sm transition-all shadow-md"
               >
                 <Cpu size={16} />
                 PC Build

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Trash2, RefreshCw, ShoppingBasket, Save, Printer, Camera, CheckCircle2, AlertTriangle, Lock, Plus, Share2, RotateCcw } from 'lucide-react';
+import { Trash2, RefreshCw, ShoppingBasket, Save, Printer, Camera, CheckCircle2, AlertTriangle, Plus, Share2, RotateCcw } from 'lucide-react';
 import { toPng } from 'html-to-image';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -95,7 +95,7 @@ export default function PCBuilder() {
           <div className="flex-1 min-w-0">{Head}<div className="h-2 w-2/3 mt-2 rounded bg-muted" />
             {locked && <p className="text-[11px] text-muted-foreground mt-1">আগে {slotByKey(s.needs)?.label} সিলেক্ট করুন</p>}</div>
           <Button size="sm" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground print:hidden" onClick={() => choose(s)}>
-            {locked && <Lock className="w-3 h-3 mr-1" />}Choose
+            Choose
           </Button>
         </div>
       );

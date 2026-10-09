@@ -39,7 +39,7 @@ export default function PCBuilderChoose() {
   });
 
   const build = loadBuild();
-  const compat = data.filter((p) => compatible(slot!.key, p.name, build));
+  const compat = data.filter((p) => compatible(slot!.key, p.name, build, JSON.stringify(p.specifications ?? '')));
   const max = Math.max(0, ...compat.map((p) => Number(p.price)));
   const [lo, hi] = range ?? [0, max];
   const brandList = useMemo(() => [...new Set(compat.map((p) => p.brand).filter(Boolean))].sort() as string[], [data]);
