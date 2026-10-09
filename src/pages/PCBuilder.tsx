@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { Cpu, CircuitBoard, MemoryStick, HardDrive, Fan, Monitor, Keyboard, Mouse, Headphones, Zap, Box, Gpu, Battery, Search, X, Trash2, Share2, RotateCcw, ShoppingCart, CheckCircle2, AlertTriangle } from 'lucide-react';
+import { Cpu, CircuitBoard, MemoryStick, HardDrive, Fan, Monitor, Keyboard, Mouse, Headphones, Zap, Box, MonitorPlay as Gpu, Battery, Search, X, Trash2, Share2, RotateCcw, ShoppingCart, CheckCircle2, AlertTriangle } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
