@@ -40,7 +40,7 @@ const NewDrop = () => {
                 New Drop
               </h1>
               <p className="text-muted-foreground text-sm md:text-base">
-                The latest drops from Amazing Computer — new gadgets, genuine quality, limited stock.
+                The latest drops from Imagine Computer — new gadgets, genuine quality, limited stock.
               </p>
             </motion.div>
           </div>

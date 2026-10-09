@@ -6,7 +6,7 @@
 
 @layer base {
   :root {
-    /* Amazing Computer — Tech Palette
+    /* Imagine Computer — Tech Palette
        Yellow #FFCC00 · Black #111111 · White #FFFFFF · Red #E11D28 (accents only) */
     --background: 0 0% 100%;
     --foreground: 0 0% 7%;
@@ -256,3 +256,12 @@
 }
 
 /* Brand color discipline: red is the primary brand color on all surfaces. */
+
+@media print {
+  @page { size: A4; margin: 8mm; }
+  body * { visibility: hidden; }
+  #pc-print, #pc-print * { visibility: visible; }
+  #pc-print { position: absolute; left: 0; top: 0; width: 100%; border: 0; font-size: 11px; zoom: 0.85; }
+  #pc-print img { max-height: 40px; }
+  #pc-print > div { padding-top: 4px !important; padding-bottom: 4px !important; break-inside: avoid; }
+}

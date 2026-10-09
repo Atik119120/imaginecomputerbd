@@ -17,15 +17,15 @@ const Index = () => {
   return (
     <>
       <SEO
-        title="Amazing Computer — Gadget & Tech Shop in Bangladesh"
-        description="Shop smart watches, earbuds, chargers, cables & power banks at Amazing Computer. Cash on delivery across Bangladesh."
+        title="Imagine Computer — Gadget & Tech Shop in Bangladesh"
+        description="Shop smart watches, earbuds, chargers, cables & power banks at Imagine Computer. Cash on delivery across Bangladesh."
         path="/"
       />
       <div className="min-h-screen flex flex-col">
 
         <Header />
         <main className="flex-1 pb-14 lg:pb-0 md:px-10 lg:px-0">
-          <h1 className="sr-only">Amazing Computer — Gadgets, Smart Watches, Earbuds & Mobile Accessories in Bangladesh</h1>
+          <h1 className="sr-only">Imagine Computer — Gadgets, Smart Watches, Earbuds & Mobile Accessories in Bangladesh</h1>
           <HeroBanner />
           <FeatureCards />
           <CategorySection />

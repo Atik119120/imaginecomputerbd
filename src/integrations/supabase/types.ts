@@ -561,6 +561,33 @@ export type Database = {
         }
         Relationships: []
       }
+      pc_builds: {
+        Row: {
+          build: Json
+          created_at: string
+          id: string
+          name: string
+          total: number
+          user_id: string
+        }
+        Insert: {
+          build: Json
+          created_at?: string
+          id?: string
+          name?: string
+          total?: number
+          user_id: string
+        }
+        Update: {
+          build?: Json
+          created_at?: string
+          id?: string
+          name?: string
+          total?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
       products: {
         Row: {
           brand: string | null

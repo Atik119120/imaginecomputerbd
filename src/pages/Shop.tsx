@@ -165,10 +165,10 @@ const Shop = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
-        title={categoryLabel ? `${categoryLabel} — Amazing Computer` : 'Shop Gadgets & Tech Accessories — Amazing Computer'}
+        title={categoryLabel ? `${categoryLabel} — Imagine Computer` : 'Shop Gadgets & Tech Accessories — Imagine Computer'}
         description={categoryLabel
-          ? `Browse ${categoryLabel} at Amazing Computer. Genuine gadgets with cash on delivery in Bangladesh.`
-          : 'Browse the full Amazing Computer catalog — smart watches, earbuds, chargers, cables and power banks.'}
+          ? `Browse ${categoryLabel} at Imagine Computer. Genuine gadgets with cash on delivery in Bangladesh.`
+          : 'Browse the full Imagine Computer catalog — smart watches, earbuds, chargers, cables and power banks.'}
         path={categoryParam ? `/shop/${categoryParam}` : '/shop'}
       />
       <Header />

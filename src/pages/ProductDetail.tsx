@@ -406,8 +406,8 @@ const ProductDetail = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
-        title={`${product.name} — Amazing Computer`}
-        description={(product.description || `${product.name} available at Amazing Computer. Order online with cash on delivery.`).slice(0, 155)}
+        title={`${product.name} — Imagine Computer`}
+        description={(product.description || `${product.name} available at Imagine Computer. Order online with cash on delivery.`).slice(0, 155)}
         path={`/product/${product.id}`}
         type="product"
         image={product.image}

@@ -22,7 +22,7 @@ export const BrandTagline = () => {
           <h2 className="font-heading text-3xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-4">
             Tech that keeps up.{' '}
             <span className="text-primary">
-              Amazing Computer.
+              Imagine Computer.
             </span>
           </h2>
 
